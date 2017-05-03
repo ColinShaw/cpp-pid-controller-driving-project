@@ -185,9 +185,9 @@ coefficient that I was using, we end up with the following
 approximate values for the coefficients:
 
 ```
-P: 1.5
-I: 0.0007
-D: 0.0006
+Kp: 1.5
+Ki: 0.0007
+Kd: 0.0006
 ```
 
 Interestingly, and as you can see in the video, the performance
