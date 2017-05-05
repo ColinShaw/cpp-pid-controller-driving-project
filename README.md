@@ -222,6 +222,24 @@ speed. Multiple optimizations could be implemented sequentially to get
 better performance.  All in all there are a *lot* of ways that the 
 performance can be improved.
 
+Since the biggest issue seems to be the optimization of the coefficients,
+this would be the focus of any improvements.   My first iteration here
+used some manual tuning to get a proportional ballpark starting point, 
+then the so-called `twiddle` method for determining the coefficients more
+explicitly.  The `twiddle` method is essentially a gradient descent method,
+but it depends on the ability to measure error consistently.  This is
+a heuristic that we can make comparable on this particular track
+by resetting the car position, but is hard to see how we could come to 
+a best general solution since it is hard to get the car to explore all of 
+the track features while exploring the coefficient space.  Another option
+that may be appealing would be to use the Ziegler-Nichols method, which 
+estimates the derivative and integral coefficients from detected 
+oscillation in a purely proportional controller.  Since we started out 
+tuning the car in exactly the same way, the Ziegler-Nichols method *could*
+give faster results, and results that could arguably be better since it 
+is not going to get stuck at a local minima of the optimization problem
+because of choice of deltas.
+
 
 
 ### Et Cetera
